@@ -1,0 +1,122 @@
+  <div class="container">
+<% @onts.each do |ont| %>
+<% if user_signed_in?  && current_user.email==ont.team%>
+        <div class="ont__info">
+	<p> ONT залишилося - </p><p style="margin-left:5px"><%=ont.count.to_s%>
+	</div>
+<%end%>
+<%end%>
+
+
+<br>
+<%if user_signed_in? && current_user.email == 'admin@ukr.net'%>
+<div class="search__inner">
+<%= form_tag '/lists', method: 'get' do %>
+<%= label_tag "Введіть що шукаєте"%>
+<%= text_field_tag :q,{}, class:"form-control"%>
+<br>
+<div class="search__btn"><%= submit_tag "Пошук", class:"btn btn-primary"%></div>
+</div>
+<%end%>
+<%end%>
+
+
+
+<%if user_signed_in? && current_user.email == 'admin@ukr.net'%>
+<div class="filter__inner" style="display: flex;justify-content: space-between; align-items:center; margin-bottom:50px;">
+<div class="filter" style="margin-top: 35px; width: 400px;">
+<%= form_with  url:'/lists', method: :get do |f| %>
+<%=f.select :team, @teams, {}, class:"form-control"%>
+<br>
+<%=f.select :status,@statuses, {}, class:"form-control"%>
+<br>
+<%=f.select :works, @works, {}, class:"form-control"%>
+<br>
+<div class="search__btn"><%= f.submit "Сортувати", class:"btn btn-primary"%></div>
+<%end%>
+</div>
+<div class="section__for__work">
+<p></p>
+<div class="count__works" style="color:blue">Всього робіт (<%=@allLists.count%>)</div>
+<div class="count__works" style="color:green">Завершено робіт (<%= @doneLists.count%>)</div>
+<div class="count__works" style="color:orange">Активних робіт (<%=@freeLists.count%>)</div>
+</div>
+
+
+</div>
+<%end%>
+
+<div class="container"> 
+
+
+
+
+
+	 <% @lists.each do |list|%>
+	<% if user_signed_in?  && current_user.email==list.team &&list.status!="Виконано"%>
+	<div class="lists__inner">
+	<div class="lists__item">
+	<div class="lists__item-text">Номер телефона:</div>
+	<div class="lists__item-info"><%=list.tel%> </div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Адреса клієнта:</div>
+	<div class="lists__item-info"><%=list.adress%> </div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Вид роботи:</div>
+	<div class="lists__item-info"><%=list.works%></div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Статус:</div>
+	<div class="lists__item-info"><%=list.status%></div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Примітка:</div>
+	<div class="lists__item-info"><%=list.descr%></div>
+	</div>
+	<div class="btn__info">
+	<%=link_to "Завершити роботу", "http://alpha-vynogradiv.net:3000/lists/#{list.id}/closeWork", class:"btn btn-success" %>
+	</div>
+	</div>
+	<hr>
+	<%elsif current_user.email=='admin@ukr.net'%>
+	
+        <div class="lists__inner">
+        <div class="lists__item">
+        <div class="lists__item-text">Номер телефона:</div>
+        <div class="lists__item-info"><%=list.tel%> </div>
+        </div>
+        <div class="lists__item">
+        <div class="lists__item-text">Адреса клієнта:</div>
+        <div class="lists__item-info"><%=list.adress%> </div>
+        </div>
+        <div class="lists__item">
+        <div class="lists__item-text">Вид роботи:</div>
+        <div class="lists__item-info"><%=list.works%></div>
+        </div>
+        <div class="lists__item">
+        <div class="lists__item-text">Статус:</div>
+        <div class="lists__item-info"><%=list.status%></div>
+        </div>
+        <div class="lists__item">
+        <div class="lists__item-text">Бригада:</div>
+        <div class="lists__item-info"><%=list.team%> </div>
+        </div>
+        <div class="lists__item">
+        <div class="lists__item-text">Примітка:</div>
+        <div class="lists__item-info"><%=list.descr%></div>
+        </div>
+        <div class="lists__item">
+        <div class="lists__item-text">Дата створення:</div>
+        <div class="lists__item-info"><%=list.created_at%></div>
+        </div>
+        <div class="btn__info"><%=link_to "Переглянути роботу", list_path(list), class:"btn btn-primary"%></div>
+        </div>
+        <hr>
+
+	<%end%>
+	<%end%> 
+</div>
+
+

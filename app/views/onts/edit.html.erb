@@ -1,0 +1,11 @@
+<%if @ont!=nil%>
+ <%=@ont.count%>
+<%end%>
+
+<br>
+<%= form_with  url: ont_path(@ont), method: :post do |f| %>
+<p>Виберіть бригаду</p><%= f.select :team, @teams, {}, {class:"form-control"}%>
+<p>Введіть к-сть виданих ONT</p> <%= f.number_field :count, class:"form-control"%>
+<p><%= f.submit "Додати", class:"btn btn-primary"%></p>
+<%end%>
+

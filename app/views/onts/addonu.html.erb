@@ -1,0 +1,11 @@
+
+
+
+<br>
+<%= form_with  url:'/addonu', method: :post do |f| %>
+<p>Виберіть бригаду</p><%= f.select :team, @teams, {}, {class:"form-control"}%>
+<p>Введіть к-сть виданих ONT</p> <%= f.number_field :count, class:"form-control"%>
+<br>
+<p><%= f.submit "Додати", class:"btn btn-success"%></p>
+<%end%>
+

@@ -1,0 +1,7 @@
+<%= @list.tel%>
+<%= @list.adress%>
+<%= @list.works%>
+<%= @list.status%>
+<%= @list.team%>
+<%= @list.descr%>
+<%= @list.%>

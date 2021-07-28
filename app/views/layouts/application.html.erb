@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+	<% if user_signed_in?%>
+	<header class="header">
+        <div class="container">
+        <div class="header__inner">
+	<% if current_user.email!="admin@ukr.net"%>
+	<p><%= link_to "Мої Робити", lists_path%></p>
+	<%end%>
+	<%if user_signed_in? && current_user.email=='admin@ukr.net'%>
+        <p><%=link_to "Список робіт", lists_path%> </p>
+	<p><%=link_to "Додати ONT", addonu_path %></p>
+        <p><%=link_to "Додати нову роботу", new_list_path%></p>
+	<%end%>
+	<div class="sign__block">
+        <% if user_signed_in? %>
+    	<span>Вітаю вас, <%= current_user.email %> | </span>
+    	<%= link_to 'Вийти', destroy_user_session_path, :method => :delete %>
+	<% else %>
+    		<%= link_to 'Ввійти', new_user_session_path %><br> <%= link_to 'Зареєструватися', new_user_registration_path %>
+	<% end %>
+	</div>
+	</div>
+        </header>
+	<%end%>
+ <div class="container">  
+ <%= yield %>
+</div>
+  </div>
+  </body>
+</html>

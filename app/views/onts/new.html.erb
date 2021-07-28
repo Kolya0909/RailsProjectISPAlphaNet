@@ -1,0 +1,6 @@
+<%= form_for :ont, url: onts_path do |f| %>
+<br>
+<p> Виберіть бригаду </p> <%= f.select :team, @teams, {}, {class:"form-control"}%>
+<p> Введіть кількість ONT</p> <%=f.number_field :count, class:"form-control"%>
+<%= f.submit "Додати", class:"btn btn-primary"%>
+<%end%>

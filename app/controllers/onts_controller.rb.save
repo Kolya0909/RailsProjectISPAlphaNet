@@ -1,0 +1,51 @@
+class OntsController < ApplicationController
+	before_action :authenticate_user!
+	
+	def index
+	
+	end
+	
+
+	def new 
+	@teams = ['Оберіть','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
+	end
+
+	
+	def edit
+	@teams = ['Оберіть','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
+	end
+
+	def update
+	@ont = Ont.all
+	@ont = 
+
+        end
+
+
+	def create
+		
+	@ont = Ont.new(onts_params)
+	@ont.save
+	
+	end
+
+	def addonu
+        @teams = ['Оберіть','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
+       	if false
+	@ont = Ont.find_by team: params[:team]
+	@ont =@ont.update(onts_params)
+	redirect_to @ont
+	end
+ 
+	if params[:team]&&params[:count]
+         @ont = Ont.all
+         @ont = Ont.find_by team: params[:team]
+	end
+
+	end
+
+	
+        private def onts_params
+		params.require(:ont).permit(:count,:team)	
+	end
+end

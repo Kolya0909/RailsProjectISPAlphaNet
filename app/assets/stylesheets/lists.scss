@@ -1,0 +1,71 @@
+// Place all the styles related to the Lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+p{
+ margin-bottom:0;
+}
+
+.header{
+
+border-bottom: 1px solid silver;
+box-shadow: 1px 1px 15px 1px silver;
+   
+   
+
+}
+.header__inner{
+          display: flex;
+          justify-content: space-between;
+          height: 80px;
+          padding:15px 20px;
+          align-items: center;
+}
+.lists__item{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    padding: 10px 30px;
+    min-height: 50px;
+    align-items: center;
+    border: 1px solid;   
+          }
+.lists__inner{
+	 margin-bottom:30px;
+          border-radius: 25px;
+          padding:15px 20px;
+
+}
+
+.lists__item-text{
+	margin-right:20px;
+	font-weight:700;
+}
+.btn__info{
+	width:100%;
+	display:block;
+	text-align:end;
+}
+.lists__item-info{
+font-size: 17px;
+    color: blue;
+}
+.sign__block{
+
+}
+.section__for__work{
+margin-top: 20px;
+    margin-bottom: 20px
+}
+.search__inner, .filter__inner{
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 1px 15px silver;
+}
+.filter__inner{
+margin-top:50px;
+}
+.search__btn{
+    display: flex;
+    justify-content: flex-end;
+}

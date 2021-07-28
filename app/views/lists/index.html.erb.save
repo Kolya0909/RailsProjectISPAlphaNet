@@ -1,0 +1,40 @@
+  <div class="container">
+<div class="container"> 
+	 <% @lists.each do |list|%
+	>
+	<div class="lists__inner">
+	<div class="lists__item">
+	<div class="lists__item-text">Номер телефона:</div>
+	<div class="lists__item-info"><%=list.tel%> </div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Адреса клієнта:</div>
+	<div class="lists__item-info"><%=list.adress%> </div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Вид роботи:</div>
+	<div class="lists__item-info"><%=list.works%></div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Статус:</div>
+	<div class="lists__item-info"><%=list.status%></div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Бригада:</div>
+	<div class="lists__item-info"><%=list.team%> </div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Примітка:</div>
+	<div class="lists__item-info"><%=list.descr%></div>
+	</div>
+	<div class="lists__item">
+	<div class="lists__item-text">Дата створення:</div>
+        <div class="lists__item-info"><%=list.created_at%></div>
+	</div>
+	<div class="btn__info"><%=link_to "Переглянути роботу", list_path(list), class:"btn btn-primary"%></div>
+	</div>
+	<hr>
+	<%end%> 
+</div>
+
+

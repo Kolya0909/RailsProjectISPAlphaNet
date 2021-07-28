@@ -1,0 +1,13 @@
+<h2>Edit me</h2>
+
+
+<%= form_for :list, url: lists_path(@list), method: :pathc do |f| %>
+<p> Номер телефона: <%= f.telephone_field :tel, class:"form-control"%></p> <br>
+<p> Адреса: <%= f.text_field :adress , class:"form-control"%> </p> <br>
+<p> Вид роботи: <%= f.select :works,@works, selected,{ class:'custom-select'}%></p> <br>
+<p> Статус: <%= f.select  :status, @statuses, {}, { class:'custom-select'}%></p> <br>
+<p> Бригада: <%= f.select :team, @teams, {}, {class:'custom-select'}%></p> <br>
+<p> Примітка: <%= f.text_area :descr, class:"form-control"%></p> <br>
+<%=f.submit "Додати", class:"btn btn-success" %>
+<%end%>
+
