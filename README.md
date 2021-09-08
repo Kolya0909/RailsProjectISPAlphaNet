@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web-application for internet provider alphanet (work planning for teams)
 
-Things you may want to cover:
+* Ruby version: 3.0.1
 
-* Ruby version
+* Rails version: 6.1.4.1
 
-* System dependencies
+* server - any unix os
 
-* Configuration
+* Database postgresql 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* App at production - http://alpha-vin.xyz:3000
