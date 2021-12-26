@@ -1,11 +1,11 @@
 class Ont < ApplicationRecord
 
-def self.addOnuInTable(c,t)
-ont=0
-number = Ont.find_by_sql("SELECT count FROM onts WHERE team =  '#{t}'" )
-number.each do |num|
-ont+=num.count
-end
+    def self.addOnuInTable(c,t)
+        ont=0
+        number = Ont.find_by_sql("SELECT count FROM onts WHERE team =  '#{t}'" )
+        number.each do |num|
+        ont+=num.count
+    end
 
 allOnt=0
 adminNumber = Ont.find_by_sql("SELECT count FROM onts WHERE team =  'admin@ukr.net'" )

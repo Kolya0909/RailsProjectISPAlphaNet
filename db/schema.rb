@@ -10,23 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_064718) do
+ActiveRecord::Schema.define(version: 2021_12_26_184832) do
 
   create_table "lists", force: :cascade do |t|
     t.string "tel"
     t.string "adress"
-    t.date "date"
     t.string "works"
     t.string "status"
     t.string "team"
     t.text "descr"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "date"
   end
 
   create_table "onts", force: :cascade do |t|
     t.integer "count"
     t.string "team"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "routers", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_064718) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "routers"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

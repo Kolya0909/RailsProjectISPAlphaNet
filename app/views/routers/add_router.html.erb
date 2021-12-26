@@ -1,0 +1,10 @@
+<%= form_with url: "/add_router" do |f| %>
+<br>
+<p> Виберіть назву роутера </p> <%= f.select :name, @routers_name,{}, {class:"form-control"}%>
+<p> Виберіть модель роутера </p> <%= f.select :model, @routers_model, {}, {class:"form-control"}%>
+<p> Введіть кількість виданих роутерів </p> <%=f.number_field :count, class:"form-control"%>
+<p> Виберіть бригаду </p> <%= f.select :team, @teams, {}, {class:"form-control"}%>
+<%= f.submit "Додати", class:"btn btn-primary"%>
+<%end%>
+
+<%=@text%>

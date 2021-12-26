@@ -6,8 +6,8 @@ class ListsController < ApplicationController
 			
 	
   		@works = ['Оберіть вид роботи','Підключення клієнта','Ремонт клієнта']
-          	@statuses = ['Оберіть статус', 'В роботі', 'Підключено']
-          	@teams = ['Оберіть бригаду','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
+        @statuses = ['Оберіть статус', 'В роботі', 'Підключено']
+        @teams = ['Оберіть бригаду','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
 		@lists = List.all
 
 		if params[:q]
@@ -85,6 +85,6 @@ class ListsController < ApplicationController
 	end
 
 	private def  list_params
-		params.require(:list).permit(:tel,:adress,:works,:status,:team,:descr,:date)
+		params.require(:list).permit(:tel,:adress,:works,:status,:team,:descr,:date).merge(date: Time.now.strftime("%d.%m.%Y"))
 	end
 end

@@ -1,0 +1,7 @@
+<%=form_for :routers, url: routers_path do |f| %>
+<p>Бренд роутера</p>
+<p><%=f.text_field :name, class:"form-control"%></p><br>
+<p>Модель роутера</p>
+<p><%=f.text_field :model, class:"form-control"%></p><br>
+<p><%=f.submit "Створити роутер", class:"btn btn-primary" %></p>
+<%end%>

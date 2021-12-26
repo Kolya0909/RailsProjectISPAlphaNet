@@ -1,0 +1,13 @@
+<%if current_user.email=='admin@ukr.net'%>
+<p><%=link_to "Створити новий роутер", new_router_path%></p><br>
+<p><%=link_to "Додати роутер", add_router_path%></p>
+<%end%>
+
+<br>
+
+<%if @routers_user!=[]%>
+
+
+<%=@routers_user%>
+<%end%>
+

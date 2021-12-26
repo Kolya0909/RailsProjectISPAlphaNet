@@ -109,7 +109,11 @@
         </div>
         <div class="lists__item">
         <div class="lists__item-text">Дата створення:</div>
+        <%if list.date==nil%>
         <div class="lists__item-info"><%=list.created_at%></div>
+        <%else%>
+        <div class="lists__item-info"><%=list.date%></div>
+        <%end%>
         </div>
         <div class="btn__info"><%=link_to "Переглянути роботу", list_path(list), class:"btn btn-primary"%></div>
         </div>
