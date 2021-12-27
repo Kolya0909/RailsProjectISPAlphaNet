@@ -12,9 +12,7 @@ class RoutersController < ApplicationController
         @routers = Router.all
         @teams = ['admin@ukr.net','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
 
-
-
-        def get_all_routers_model
+        def get_all_routers_model               #Создает сет с моделями роутеров
                 @routers_model = []
                 @routers.each do |router|
                 @routers_model.push(router.model)
@@ -22,45 +20,26 @@ class RoutersController < ApplicationController
                 @routers_model = @routers_model.to_set
         end
 
-        def get_all_routers_name
+        def get_all_routers_name                #Создает сет с брендами роутеров
                 @routers_name = []
                 @routers.each do |router|
                 @routers_name.push(router.name)
             end
                 @routers_name = @routers_name.to_set
         end
-
-
-        # def add_router_to_team
-        #      @team = User.find_by(email: params[:team])
-        #      @team.routers.push(name: params[:name],model: params[:model],count: params[:count])
-        #      @team.save
-        #      redirect_to lists_path
-        #  end
-
+        
         get_all_routers_name()
         get_all_routers_model()
 
         if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=''&&params[:team]!=nil
-            #add_router_to_team()
-            Router.add_router_to_team(params[:team],params[:name],params[:model],params[:count])
+            Router.add_router_to_team(params[:team],params[:name],params[:model],params[:count]) #Добавляет роутер к юзерам
         end
-
-
-
-
-
-
-
 
     end
 
     def new
 
     end
-
-
-
 
 
     def create
