@@ -50,6 +50,26 @@
 
 
 
+        
+        <div class="modal__window">
+                <div class="modal__window-inner">
+                        <span>Використали роутер?</span>
+                        <input type="checkbox" class="check__router">
+                        <%=form_with  url: "/add_router" do |f| %>
+                                
+                                 <%= f.number_field :count, class:"form-control"%>
+                                 <%= f.submit "Готово", class:"btn btn-success"%>
+                        <%end%>
+                </div>
+        </div>
+
+      
+
+
+
+
+
+
 
 
 	 <% @lists.each do |list|%>
@@ -76,10 +96,14 @@
 	<div class="lists__item-info"><%=list.descr%></div>
 	</div>
 	<div class="btn__info">
-	<%=link_to "Завершити роботу", "http://alpha-vynogradiv.net:3000/lists/#{list.id}/closeWork", class:"btn btn-success" %>
+	<%=link_to "Завершити роботу", "http://alpha-vynogradiv.net:3000/lists/#{list.id}/closeWork", class:"btn btn-success close__work" %>
 	</div>
 	</div>
 	<hr>
+
+
+
+        
 	<%elsif current_user.email=='admin@ukr.net'%>
 	
         <div class="lists__inner">

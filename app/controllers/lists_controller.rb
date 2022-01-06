@@ -4,7 +4,7 @@ class ListsController < ApplicationController
 
 	def index
 			
-	
+		
   		@works = ['Оберіть вид роботи','Підключення клієнта','Ремонт клієнта']
         @statuses = ['Оберіть статус', 'В роботі', 'Підключено']
         @teams = ['Оберіть бригаду','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
