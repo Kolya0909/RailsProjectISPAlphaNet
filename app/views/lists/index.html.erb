@@ -55,11 +55,14 @@
                 <div class="modal__window-inner">
                         <span>Використали роутер?</span>
                         <input type="checkbox" class="check__router">
-                        <%=form_with  url: "/add_router" do |f| %>
-                                
-                                 <%= f.number_field :count, class:"form-control"%>
-                                 <%= f.submit "Готово", class:"btn btn-success"%>
-                        <%end%>
+                        <div class="close__work-form" style="opacity:0;height:0;"><br>
+                                <%=form_with  url: "/add_router" do |f| %>
+                                        <p> Виберіть назву роутера </p> <%= f.select :name, @routers_name,{}, {class:"form-control"}%></p><br>    
+                                        <p> Виберіть модель роутера </p> <%= f.select :model, @routers_model, {}, {class:"form-control"}%></p><br>
+                                        <p> Введіть кількість виданих роутерів </p> <%=f.number_field :count, class:"form-control"%></p><br>
+                                        <%= f.submit "Готово", class:"btn btn-success"%>
+                                <%end%>
+                        </div>
                 </div>
         </div>
 

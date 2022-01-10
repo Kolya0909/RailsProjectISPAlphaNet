@@ -5,4 +5,21 @@ const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
 
 
-const closeWorks = document.querySelectorAll('close__work')
+
+window.onload = () =>{
+
+    const useRouterBtn = document.querySelector('.check__router')
+    const formCloseWork = document.querySelector('.close__work-form')
+
+    useRouterBtn.addEventListener('click', ()=>{
+        if(useRouterBtn.checked){
+            
+            formCloseWork.style.opacity = '1'
+            formCloseWork.style.height = '100%'
+        }
+        else{
+            formCloseWork.style.opacity = '0'
+            formCloseWork.style.height = '0'
+        }
+    })
+}
