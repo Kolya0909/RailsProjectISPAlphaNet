@@ -2,12 +2,17 @@
 <p><%=link_to "Створити новий роутер", new_router_path%></p><br>
 <p><%=link_to "Додати роутер", add_router_path%></p>
 <%end%>
-
 <br>
+
 
 <%if @routers_user!=[]%>
 
 
-<%=@routers_user%>
+<%@routers_user.each do |router|%>
+<p>Бренд: <%=router[:name]%></p>
+<p>Модель: <%=router[:model]%></p>
+<p>К-сть: <%=router[:count]%></p>
+<hr>
+<%end%>
 <%end%>
 

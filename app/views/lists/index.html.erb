@@ -60,6 +60,12 @@
                                         <p> Виберіть назву роутера </p> <%= f.select :name, @routers_name,{}, {class:"form-control"}%></p><br>    
                                         <p> Виберіть модель роутера </p> <%= f.select :model, @routers_model, {}, {class:"form-control"}%></p><br>
                                         <p> Введіть кількість виданих роутерів </p> <%=f.number_field :count, class:"form-control"%></p><br>
+                                        <div style="display:flex;justify-content:space-between;">
+                                        <p>Тест<%=f.radio_button :ifoaboutrouter, 'Test'%></p>
+                                        <p>Ремонт<%=f.radio_button :ifoaboutrouter, 'Remont'%></p>
+                                        <p>Продажа<%=f.radio_button :ifoaboutrouter, 'Prodazha'%></p>
+                                        </div><br>
+                                        <p>Примітка<%=f.text_field :prumitka, class: "form-control"%><br>
                                         <%= f.submit "Готово", class:"btn btn-success"%>
                                 <%end%>
                         </div>
@@ -151,3 +157,26 @@
 </div>
 
 
+<script type="text/javascript">
+
+        if (useRouterBtn===undefined&&formCloseWork===undefined){
+                 let useRouterBtn = document.querySelector('.check__router')
+                 let formCloseWork = document.querySelector('.close__work-form')
+                 useRouterBtn.addEventListener('click', ()=>{
+        if(useRouterBtn.checked){
+            
+            formCloseWork.style.opacity = '1'
+            formCloseWork.style.height = '100%'
+        }
+        else{
+            formCloseWork.style.opacity = '0'
+            formCloseWork.style.height = '0'
+        }
+    })
+        }
+   
+
+    
+
+
+</script>
