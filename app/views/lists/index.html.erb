@@ -3,9 +3,19 @@
 <% if user_signed_in?  && current_user.email==ont.team%>
         <div class="ont__info">
 	<p> ONT залишилося - </p><p style="margin-left:5px"><%=ont.count.to_s%>
+
 	</div>
 <%end%>
+
 <%end%>
+		<%if current_user.email!='admin@ukr.net' %>
+			<%@routers_user.each do |router|%>
+				<p>Бренд: <%=router[:name]%></p>
+				<p>Модель: <%=router[:model]%></p>
+				<p>К-сть: <%=router[:count]%></p>
+				<hr>
+			<%end%>
+		<%end %>
 
 
 <br>
@@ -49,39 +59,6 @@
 <div class="container"> 
 
 
-
-        <div class="fixed-overlay">
-        <div class="modal__window">
-                <div class="modal__window-inner">
-                        <span>Використали роутер?</span>
-                        <input type="checkbox" class="check__router">
-                        <div class="close__work-form" style="opacity:0;height:0;pointer-events:none"><br>
-                                <%=form_with  url: "/add_router" do |f| %>
-                                        <p> Виберіть назву роутера </p> <%= f.select :name, @routers_name,{}, {class:"form-control"}%></p><br>    
-                                        <p> Виберіть модель роутера </p> <%= f.select :model, @routers_model, {}, {class:"form-control"}%></p><br>
-                                        <p> Введіть кількість виданих роутерів </p> <%=f.number_field :count, class:"form-control"%></p><br>
-                                        <div style="display:flex;justify-content:space-between;">
-                                        <p>Тест<%=f.radio_button :ifoaboutrouter, 'Test'%></p>
-                                        <p>Ремонт<%=f.radio_button :ifoaboutrouter, 'Remont'%></p>
-                                        <p>Продажа<%=f.radio_button :ifoaboutrouter, 'Prodazha'%></p>
-                                        </div><br>
-                                        <p>Примітка<%=f.text_field :prumitka, class: "form-control"%><br>
-                                        <%= f.submit "Готово", class:"btn btn-success"%>
-                                <%end%>
-                        </div>
-                </div>
-        </div>
-        </div>
-
-      
-
-
-
-
-
-
-
-
 	 <% @lists.each do |list|%>
 	<% if user_signed_in?  && current_user.email==list.team &&list.status!="Виконано"%>
 	<div class="lists__inner">
@@ -105,9 +82,9 @@
 	<div class="lists__item-text">Примітка:</div>
 	<div class="lists__item-info"><%=list.descr%></div>
 	</div>
-	<div class="btn__info">
-	<%=link_to "Завершити роботу", "http://alpha-vynogradiv.net:3000/lists/#{list.id}/closeWork", class:"btn btn-success close__work" %>
-	</div>
+    <div class="btn__info">
+      <%=link_to "Завершити роботу", "/lists/#{list.id}/closeWork", class:"btn btn-success close__work" %>
+    </div>
 	</div>
 	<hr>
 
@@ -156,75 +133,6 @@
 	<%end%>
 	<%end%> 
 </div>
+  </div>
 
 
-<script type="text/javascript">
-                 var useRouterBtn = document.querySelector('.check__router')
-                 var formCloseWork = document.querySelector('.close__work-form')
-                 var formBlure = document.querySelector('.fixed-overlay')
-                 var closeWorkBtns = document.querySelectorAll('.close__work')
-                 var checkRouterBtn = document.querySelector('.modal__window')
-
-                for(let i =0;i<closeWorkBtns.length;i++){
-                        closeWorkBtns[i].addEventListener('click',()=>{
-                                formBlure.classList.add('fixed-overlay-active')
-                                checkRouterBtn.classList.add('modal__window-active')
-                        })
-                }
-
-
-        useRouterBtn.addEventListener('click', ()=>{
-        if(useRouterBtn.checked){
-            
-            formCloseWork.style.opacity = '1'
-            formCloseWork.style.height = '100%'
-            formCloseWork.style.pointerEvents = 'visible'
-           
-        }
-        else{
-            formCloseWork.style.opacity = '0'
-            formCloseWork.style.height = '0'
-            formCloseWork.style.pointerEvents = 'none'
-            
-        }
-    })
-</script>
-
-<style>
-
-.fixed-overlay-active {
-    position: fixed;
-    overflow: auto;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-
-.modal__window{
-    background: white;
-    border: 1px solid;
-    padding: 10px;
-    position: absolute;
-    left: 50%;
-    top: 20%;
-    margin-left: -100px;
-    margin-top: -75px;
-
-}
-
-.modal__inner{
-    background-color: #fff;
-    width: 200px;
-    height: 150px;
-}
-
-.modal__window{
-        display:none;
-}
-.modal__window-active{
-        display:block;
-}
-
-</style>

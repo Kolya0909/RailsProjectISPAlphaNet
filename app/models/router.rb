@@ -85,7 +85,24 @@ class Router < ApplicationRecord
         
         
     end
-    
+
+    def self.close_work_with_router(user,router_name,router_model,router_count)
+        @all_routers_user = user.routers
+
+        @all_routers_user.each do |router|
+            if router[:name]==router_name&&router[:model]==router_model
+                router[:count] = router[:count].to_i - router_count.to_i
+            end
+        end
+
+
+
+        user.routers = @all_routers_user
+        user.save
+
+
+    end
+
 #test
     
 

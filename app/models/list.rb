@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+ serialize :router, Array
 
 def self.changeStatusWork(l)
 

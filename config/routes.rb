@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/add_router' => 'routers#add_router'
   post '/add_router' => 'routers#add_router'
   get '/lists/:id/closeWork' =>'lists#closeWork'
-  post '/lists/:id/closeWork' =>'lists#closeWork' 
+  post '/lists/:id/closeWork' =>'lists#closeWork'
+  post '/closeWork' => 'lists#closeWork'
   root 'lists#index'	
   resources :lists
   resources :routers

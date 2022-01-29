@@ -3,29 +3,7 @@ class ListsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-			@routers = Router.all
-
-			def get_all_routers_model               #Создает сет с моделями роутеров
-				@routers_model = []
-				@routers.each do |router|
-				@routers_model.push(router.model)
-				end
-				@routers_model = @routers_model.to_set
-			end
-
-			def get_all_routers_name                #Создает сет с брендами роутеров
-					@routers_name = []
-					@routers.each do |router|
-					@routers_name.push(router.name)
-				end
-					@routers_name = @routers_name.to_set
-			end
-		
-		get_all_routers_name()
-		get_all_routers_model()
-			
-	
-		
+		@routers_user = current_user.routers
   		@works = ['Оберіть вид роботи','Підключення клієнта','Ремонт клієнта']
         @statuses = ['Оберіть статус', 'В роботі', 'Підключено']
         @teams = ['Оберіть бригаду','grabovich@ukr.net','vladi@ukr.net','igor@ukr.net']
@@ -80,17 +58,46 @@ class ListsController < ApplicationController
 	end
 
 	def closeWork
-		@list = List.find(params[:id])
-		@allList = List.all
-		@ont = Ont.all
-		if @list.works == "Підключення клієнта"
-		@ont.closeWork(@list.team)
- 		@allList.changeStatusWork(@list)
-		redirect_to lists_path
-		elsif 
-		@allList.changeStatusWork(@list)
-                redirect_to lists_path
+
+		@routers = current_user.routers
+
+		def get_all_routers_model               #Создает сет с моделями роутеров
+			@routers_model = []
+			@routers.each do |router|
+				@routers_model.push(router[:model])
+			end
+			@routers_model = @routers_model.to_set
 		end
+
+		def get_all_routers_name                #Создает сет с брендами роутеров
+			@routers_name = []
+			@routers.each do |router|
+				@routers_name.push(router[:name])
+			end
+			@routers_name = @routers_name.to_set
+		end
+
+		get_all_routers_name()
+		get_all_routers_model()
+
+		if params[:id]!=nil
+		  @list = List.find(params[:id])
+			@allList = List.all
+			@ont = Ont.all
+			if @list.works == "Підключення клієнта"
+				@ont.closeWork(@list.team)
+				@allList.changeStatusWork(@list)
+			elsif
+			@allList.changeStatusWork(@list)
+			end
+		else
+			if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=nil&&params[:ifoaboutrouter]!=nil
+				Router.close_work_with_router(current_user,params[:name],params[:model],params[:count])
+				redirect_to lists_path
+			end
+		end
+
+
 	end
 
 	def destroy
