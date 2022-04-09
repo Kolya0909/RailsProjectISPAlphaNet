@@ -5,6 +5,11 @@ class RoutersController < ApplicationController
     def index
         @routers = Router.all
         @routers_user = current_user.routers
+        @admin = User.find_by_email("admin@ukr.net")
+        #@grabovich =  User.find_by_email('grabovich@ukr.net')
+        # @slava = User.find_by_email('slava@ukr.net')
+        #@igor = User.find_by_email('igor@ukr.net')
+        @vladi = User.find_by_email('vladi@ukr.net')
     end
 
     def add_router

@@ -9,6 +9,7 @@
 
 <%end%>
 		<%if current_user.email!='admin@ukr.net' %>
+			<p>Роутерів залишилося:</p>
 			<%@routers_user.each do |router|%>
 				<p>Бренд: <%=router[:name]%></p>
 				<p>Модель: <%=router[:model]%></p>

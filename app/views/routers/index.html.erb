@@ -4,15 +4,70 @@
 <%end%>
 <br>
 
+<div class="get_router_inner">
+  <div class="get_router-item">
+    <div class="btn btn-info get_router_btn-admin">admin's routers</div>
+    <div class="get_router_info-admin get_router_info">
+      <%@admin.routers.each do |router| %>
+        <span>Бренд: <%=router[:name]%></span>
+        <span>Модель: <%=router[:model]%></span>
+        <span>К-сть: <%=router[:count]%></span>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+  <div class="get_router-item">
+    <div class="btn btn-info get_router_btn-grabi">grabovich routers</div>
+    <div class="get_router_info-grabi get_router_info">
+      <%@vladi.routers.each do |router| %>
+        <span>Бренд: <%=router[:name]%></span>
+        <span>Модель: <%=router[:model]%></span>
+        <span>К-сть: <%=router[:count]%></span>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+  <div class="get_router-item">
+    <div class="btn btn-info get_router_btn-slava">slava routers</div>
+    <div class="get_router_info-slava get_router_info"></div>
+  </div>
+  <div class="get_router-item">
+    <div class="btn btn-info get_router_btn-igor">igor routers</div>
+    <div class="get_router_info-igor get_router_info"></div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+    var routerBtnAdmin = document.querySelector('.get_router_btn-admin')
+  var routerBtnGrabi = document.querySelector('.get_router_btn-grabi')
+  var routerBtnIgor = document.querySelector('.get_router_btn-igor')
+  var routerBtnSlava = document.querySelector('.get_router_btn-slava')
+
+    var routerInfoAdmin = document.querySelector('.get_router_info-admin')
+  var routerInfoGrabi = document.querySelector('.get_router_info-grabi')
+  var routerInfoIgor = document.querySelector('.get_router_info-igor')
+  var routerInfoSlava = document.querySelector('.get_router_info-slava')
+
+  function showRoutersInfo(btn, infoBlock){
+      btn.addEventListener('click',() => {
+          if(infoBlock.classList.contains('get_router_info-active')){
+              infoBlock.classList.remove('get_router_info-active')
+          }else infoBlock.classList.add('get_router_info-active')
+      })
+  }
+
+  showRoutersInfo(routerBtnGrabi, routerInfoGrabi)
+  showRoutersInfo(routerBtnIgor, routerInfoIgor)
+  showRoutersInfo(routerBtnSlava, routerInfoSlava)
+  showRoutersInfo(routerBtnAdmin, routerInfoAdmin)
+
+
+</script>
+
+
 
 <%if @routers_user!=[]%>
 
-
-<%@routers_user.each do |router|%>
-<p>Бренд: <%=router[:name]%></p>
-<p>Модель: <%=router[:model]%></p>
-<p>К-сть: <%=router[:count]%></p>
-<hr>
-<%end%>
 <%end%>
 
