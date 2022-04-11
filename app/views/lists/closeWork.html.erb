@@ -12,11 +12,11 @@
 		<p> Виберіть модель роутера </p> <%= f.select :model, @routers_model, {}, {class:"form-control"}%></p><br>
 		<p> Введіть кількість виданих роутерів </p> <%=f.number_field :count, class:"form-control"%></p><br>
 		<div style="display:flex;justify-content:space-between;">
-			<p>Тест<%=f.radio_button :ifoaboutrouter, 'Test'%></p>
-			<p>Ремонт<%=f.radio_button :ifoaboutrouter, 'Remont'%></p>
-			<p>Продажа<%=f.radio_button :ifoaboutrouter, 'Prodazha'%></p>
+			<p>Тест<%=f.radio_button :info_about_router, 'Test'%></p>
+			<p>Ремонт<%=f.radio_button :info_about_router, 'Remont'%></p>
+			<p>Продажа<%=f.radio_button :info_about_router, 'Prodazha'%></p>
 		</div><br>
-		<p>Примітка<%=f.text_field :prumitka, class: "form-control"%><br>
+		<p>Примітка<%=f.text_field :description, class: "form-control"%><br>
 			<%= f.submit "Готово", class:"btn btn-success"%>
 	<%end%>
 </div>

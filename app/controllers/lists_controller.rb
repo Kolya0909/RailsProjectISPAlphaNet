@@ -91,8 +91,10 @@ class ListsController < ApplicationController
 			@allList.changeStatusWork(@list)
 			end
 		else
-			if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=nil&&params[:ifoaboutrouter]!=nil
+			if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=nil&&params[:info_about_router]!=nil
 				Router.close_work_with_router(current_user,params[:name],params[:model],params[:count])
+				@useRouter = UsedRouter.new(name: params[:name], model: params[:model], count: params[:count], info_about_router: params[:info_about_router], description: params[:description], time: Time.now.strftime("%d.%m.%Y"))
+				@useRouter.save
 				redirect_to lists_path
 			end
 		end

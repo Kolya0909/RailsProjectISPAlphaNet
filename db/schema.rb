@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_084859) do
+ActiveRecord::Schema.define(version: 2022_04_11_092450) do
 
   create_table "lists", force: :cascade do |t|
     t.string "tel"
@@ -39,14 +39,19 @@ ActiveRecord::Schema.define(version: 2022_04_11_084859) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "use_routers", force: :cascade do |t|
+# Could not dump table "use_routers" because of following StandardError
+#   Unknown type 'infoaboutrouter' for column 'type'
+
+  create_table "used_routers", force: :cascade do |t|
     t.string "name"
     t.string "model"
     t.string "count"
-    t.string "type"
-    t.string "prymitka"
+    t.string "info_about_router"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "time"
+    t.integer "list_id"
   end
 
   create_table "users", force: :cascade do |t|

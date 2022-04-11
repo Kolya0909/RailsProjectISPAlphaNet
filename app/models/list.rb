@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+ has_one :used_router
  serialize :router, Array
 
 def self.changeStatusWork(l)
