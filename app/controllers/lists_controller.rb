@@ -3,6 +3,7 @@ class ListsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
+
 		@routers_user = current_user.routers
   		@works = ['Оберіть вид роботи','Підключення клієнта','Ремонт клієнта']
         @statuses = ['Оберіть статус', 'В роботі', 'Підключено']
@@ -91,14 +92,13 @@ class ListsController < ApplicationController
 			@allList.changeStatusWork(@list)
 			end
 		else
-			if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=nil&&params[:info_about_router]!=nil
-				Router.close_work_with_router(current_user,params[:name],params[:model],params[:count])
-				@useRouter = UsedRouter.new(name: params[:name], model: params[:model], count: params[:count], info_about_router: params[:info_about_router], description: params[:description], time: Time.now.strftime("%d.%m.%Y"))
-				@useRouter.save
-				redirect_to lists_path
-			end
+			 if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=nil&&params[:info_about_router]!=nil
+				 @rout = UsedRouter.new(name: params[:name], model: params[:model], count: params[:count], info_about_router: params[:info_about_router], description: params[:description], time: Time.now.strftime("%d.%m.%Y"))
+				 @rout.save
+				 Router.close_work_with_router(current_user,params[:name],params[:model],params[:count])
+			 	redirect_to lists_path
+			 end
 		end
-
 
 	end
 

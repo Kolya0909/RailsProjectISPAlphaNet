@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_11_092450) do
+ActiveRecord::Schema.define(version: 2022_04_11_101000) do
 
   create_table "lists", force: :cascade do |t|
     t.string "tel"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2022_04_11_092450) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "date"
-    t.text "router"
   end
 
   create_table "onts", force: :cascade do |t|
@@ -51,7 +50,6 @@ ActiveRecord::Schema.define(version: 2022_04_11_092450) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "time"
-    t.integer "list_id"
   end
 
   create_table "users", force: :cascade do |t|
