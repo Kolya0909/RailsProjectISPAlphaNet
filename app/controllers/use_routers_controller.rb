@@ -1,0 +1,2 @@
+class UseRoutersController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class UseRouter < ApplicationRecord
+end

@@ -1,5 +1,11 @@
 <span>Використали роутер?</span>
-<input type="checkbox" class="check__router">
+<div class="btn-block" style="display: flex; justify-content: flex-start; margin-top: 20px;">
+	<div class="btn btn-success check__router" style="margin-right: 20px;">Так</div>
+	<%= link_to "Ні", lists_path, class: "btn btn-danger" %>
+</div>
+
+
+
 <div class="close__work-form" style="opacity:0;height:0;pointer-events:none"><br>
 	<%=form_with  url: "/closeWork" do |f| %>
 		<p> Виберіть назву роутера </p> <%= f.select :name, @routers_name,{}, {class:"form-control"}%></p><br>
@@ -33,7 +39,7 @@
 
 
 	useRouterBtn.addEventListener('click', ()=>{
-		if(useRouterBtn.checked){
+		if(formCloseWork.style.opacity === '0'){
 
 			formCloseWork.style.opacity = '1'
 			formCloseWork.style.height = '100%'

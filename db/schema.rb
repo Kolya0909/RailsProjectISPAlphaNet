@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_105602) do
+ActiveRecord::Schema.define(version: 2022_04_11_084859) do
 
   create_table "lists", force: :cascade do |t|
     t.string "tel"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2022_01_18_105602) do
   create_table "routers", force: :cascade do |t|
     t.string "name"
     t.string "model"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "use_routers", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.string "count"
+    t.string "type"
+    t.string "prymitka"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
