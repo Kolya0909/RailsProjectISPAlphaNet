@@ -1,0 +1,22 @@
+<%if current_user.email == 'admin@ukr.net' %>
+  <% @usedRoutersAll.each do |usedRouter| %>
+    <p>Назва: <%=usedRouter.name %></p> <br>
+    <p>Модель: <%=usedRouter.model %></p> <br>
+    <p>К-сть: <%=usedRouter.count %> </p><br>
+    <p>Інфо: <%=usedRouter.info_about_router %></p> <br>
+    <p>Опис: <%=usedRouter.description %></p> <br>
+    <p>Дата: <%=usedRouter.time %></p> <br>
+    <hr>
+  <% end %>
+  <%else %>
+  <% @usedRouters.each do |usedRouter| %>
+    <p>Назва: <%=usedRouter.name %></p> <br>
+    <p>Модель: <%=usedRouter.model %></p> <br>
+    <p>К-сть: <%=usedRouter.count %> </p><br>
+    <p>Інфо: <%=usedRouter.info_about_router %></p> <br>
+    <p>Опис: <%=usedRouter.description %></p> <br>
+    <p>Дата: <%=usedRouter.time %></p> <br>
+    <hr>
+  <%end %>
+<%end %>
+

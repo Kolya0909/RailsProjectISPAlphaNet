@@ -57,9 +57,10 @@
 </div>
 <%end%>
 
-<div class="container"> 
-
-
+<div class="container">
+<%if current_user.email!='admin@ukr.net' %>
+		<%= link_to "Історія роутерів", use_routers_path, class: "history_routers btn btn-link" %>
+	<%end %>
 	 <% @lists.each do |list|%>
 	<% if user_signed_in?  && current_user.email==list.team &&list.status!="Виконано"%>
 	<div class="lists__inner">

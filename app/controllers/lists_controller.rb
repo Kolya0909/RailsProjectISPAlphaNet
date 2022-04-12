@@ -93,7 +93,7 @@ class ListsController < ApplicationController
 			end
 		else
 			 if params[:name]!=nil&&params[:model]!=nil&&params[:count]!=nil&&params[:info_about_router]!=nil
-				 @rout = UsedRouter.new(name: params[:name], model: params[:model], count: params[:count], info_about_router: params[:info_about_router], description: params[:description], time: Time.now.strftime("%d.%m.%Y"))
+				 @rout = UsedRouter.new(name: params[:name], model: params[:model], count: params[:count], info_about_router: params[:info_about_router], description: params[:description], time: Time.now.strftime("%d.%m.%Y"), user_id: current_user.id)
 				 @rout.save
 				 Router.close_work_with_router(current_user,params[:name],params[:model],params[:count])
 			 	redirect_to lists_path
